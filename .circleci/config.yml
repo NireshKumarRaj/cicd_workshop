@@ -49,4 +49,5 @@ workflows:
       - build:
           name: build
       - deploy:
-          requires: build
+          requires: 
+            - build
