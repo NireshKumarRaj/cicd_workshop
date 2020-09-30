@@ -8,8 +8,7 @@ jobs:
     executor: python_docker
     steps:
       -run:
-        command: |
-          echo 'Hello world'
+        command: echo 'Hello world'
 
 workflows:
   build_test_and_deploy:
