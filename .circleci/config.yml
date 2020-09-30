@@ -15,8 +15,10 @@ jobs:
             sudo chown -R circleci:circleci .
             chmod -R +rwx ./ci
             ./ci/setup.sh
-            echo 'Hello world'
-          name: setup
+          name: Setup
+      - run:
+          command: ./ci/run-tests.sh
+          name: Run Tests
 
 workflows:
   build_test_and_deploy:
