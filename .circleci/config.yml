@@ -11,6 +11,7 @@ jobs:
           path: ~/project
       - run:
           command: |
+            chmod -R +rwx ./ci
             ./ci/setup.sh
             echo 'Hello world'
 
