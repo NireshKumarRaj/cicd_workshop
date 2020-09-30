@@ -21,6 +21,26 @@ jobs:
           name: Run Tests
       - store_artifacts:
           path: reports
+      - run:
+          command: tar -cvf package.tar .
+          name: Create package
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - ./*.tar
+  
+  deploy:
+    executor: python_docker
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          command: |
+            mkdir deploy
+            cp package.tar deploy/
+      - store_artifacts:
+          path: deploy
+
 
 
 workflows:
@@ -28,3 +48,5 @@ workflows:
     jobs:
       - build:
           name: build
+      - deploy:
+          requires: build
