@@ -11,9 +11,12 @@ jobs:
           path: ~/project
       - run:
           command: |
+            ls -al
+            sudo chown -R circleci:circleci .
             chmod -R +rwx ./ci
             ./ci/setup.sh
             echo 'Hello world'
+          name: setup
 
 workflows:
   build_test_and_deploy:
