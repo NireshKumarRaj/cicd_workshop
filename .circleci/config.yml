@@ -7,8 +7,11 @@ jobs:
   build:
     executor: python_docker
     steps:
+      - checkout:
+          path: ~/project
       - run:
           command: |
+            ./ci/setup.sh
             echo 'Hello world'
 
 workflows:
